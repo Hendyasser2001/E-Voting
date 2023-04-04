@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -49,4 +49,69 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+ SignUp Now!
+    </title>
+    <link rel="stylesheet" href="{{ asset('assets/css/register.css') }}">
+
+
+</head>
+<body>
+
+    <div id="login-box">
+        <div class="left">
+          <h1>Sign up</h1>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            @method('post')
+            @if($errors->get('name'))
+            <p>{{ $errors->get('name')[0] }}</p>
+            @endif
+          <input type="text" name="name" placeholder="Username" required/>
+          
+      {{-- @endif --}}
+            @if($errors->get('email'))
+                <p>{{ $errors->get('email')[0] }}</p>
+            @endif
+          <input type="text" name="email" placeholder="E-mail" required/>
+          <input type="password" name="password" placeholder="Password" required/>
+          <input type="password" name="password_confirmation" placeholder="Retype password" required/>
+          @if($errors->get('phone'))
+                <p>{{ $errors->get('phone')[0] }}</p>
+            @endif
+          <input type="number" name="phone" placeholder="Enter your phone" pattern="^01[0-2]\s\d{1,8}$" required>
+        @foreach ($roles as $role )
+            <p>{{ $role->name }}</p>
+        @endforeach
+          <input type="submit" name="signup_submit" value="Sign up" />
+        </form>
+        </div>
+
+        <div class="right">
+          <span class="loginwith">Sign in with<br />social network</span>
+
+          <button class="social-signin facebook">Log in with facebook</button>
+          <button class="social-signin twitter">Log in with Twitter</button>
+          <button class="social-signin google">Log in with Google+</button>
+        </div>
+        <div class="or">OR</div>
+      </div>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+</html>

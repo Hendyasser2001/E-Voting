@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +44,29 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+<html>
+    <head>
+        <title>Login Form </title>
+        <link rel="stylesheet" href="{{ asset('assets/css/login2.css') }}"/>
+        <script src="./login2.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="main">
+                <h2> Login </h2>
+                <form id="form_id" method="POST" action="{{ route('login') }}" name="myform">
+                    @csrf
+                    @method('post')
+                    <label>User Name :</label>
+                    <input type="text" name="email" id="username"/>
+                    <label>Password :</label>
+                    <input type="password" name="password" id="password"/>
+                    <input type="submit" value="Login" id="submit" onclick="validate()"/>
+                </form>
+                <span><b class="note">Note : </b>For this demo use following username and password. <br/><b class="valid">User Name : Formget<br/>Password : formget#123</b></span>
+                <p class="message">Not registered? <a href="register.html">Create an account</a></p>
+            </div>
+        </div>
+    </body>
+</html>
